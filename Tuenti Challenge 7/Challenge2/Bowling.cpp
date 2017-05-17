@@ -14,7 +14,6 @@ int main(){
     	pins.clear();
     	round=0;
     	p=0;
-
     	cout<<"Case #"<<i<<": ";
 
     	for(int j=0;j<rolls;j++){
