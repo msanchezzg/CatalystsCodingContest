@@ -1,5 +1,5 @@
 # Catalysts Coding Contest 2017
 ### Problems solved by:
-- María Sánchez ***MariaSG98*** 
+- María Sánchez ***msanchezzg*** 
 - Diego Rodrigo ***DVRodri8***
 
