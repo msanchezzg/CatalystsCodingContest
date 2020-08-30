@@ -2,85 +2,70 @@ import math
 import collections
 
 
-l = input()
-l  = l.split()
-filas = l[0]
-filas = int(filas)
-columnas = l[1]
-columnas = int(columnas)
+line = input().split()
+filas = int(line[0])
+columnas = int(line[1])
 
-fila=[]
-matriz=[]
-dicc={}
-#f=[-1]*(filas+2)
-#matriz.append(f)
-
+fila = []
+matriz = []
+countriesBorders = {}
 
 for i in range(filas):
-		a = input()
-		a = a.split()
-		a = a[1::2]
-		a = [int(x) for x in a]
+	countriesIDs = input().split()
+	countriesIDs = countriesIDs[1::2]
+	countriesIDs = [int(x) for x in countriesIDs]
 
-		for x in a:
-			if x not in dicc:
-				dicc[x]=0
+	for country in countriesIDs:
+		if country not in countriesBorders:
+			countriesBorders[country] = 0
 
-		#a = [-1]+a+[-1]
-
-		matriz.append(a)
+	matriz.append(countriesIDs)
 		
-
-#matriz.append(f)
-#filas+=2
-#columnas+=2
 
 for fila in matriz:
 	print(fila)
 
-for i in range(1,filas-1):
-
-	for j in range(1,columnas-1):
+for i in range(1, filas-1):
+	for j in range(1, columnas-1):
 		n = matriz[i][j]
 		
-		#izquierda
-		m=matriz[i][j-1]
-		if(n != m ):
-			dicc[n]+=1
+		# izquierda
+		m = matriz[i][j-1]
+		if(n != m):
+			countriesBorders[n] += 1
 			continue
 
-		#abajo
-		m=matriz[i+1][j]
-		if(n != m ):
-			dicc[n]+=1
+		# abajo
+		m = matriz[i+1][j]
+		if(n != m):
+			countriesBorders[n] += 1
 			continue
 
-		#derecha
-		m=matriz[i][j+1]
-		if(n != m ):
-			dicc[n]+=1
+		# derecha
+		m = matriz[i][j+1]
+		if(n != m):
+			countriesBorders[n] += 1
 			continue
 
-		#arriba
-		m= matriz[i-1][j]
-		if(n != m ):
-			dicc[n]+=1
+		# arriba
+		m = matriz[i-1][j]
+		if(n != m):
+			countriesBorders[n] += 1
 			continue
 
 
-for casilla in matriz[0]:	#primera fila
-	dicc[casilla]+=1
+for casilla in matriz[0]:	# primera fila
+	countriesBorders[casilla] += 1
 
-for casilla in matriz[-1]:	#ultima fila
-	dicc[casilla]+=1
+for casilla in matriz[-1]:	# ultima fila
+	countriesBorders[casilla] += 1
 
-for i in range(1,filas-1):
-	dicc[matriz[i][0]]+=1	#primera columna
-	dicc[matriz[i][-1]]+=1	#ultima columna
+for i in range(1, filas-1):
+	countriesBorders[matriz[i][0]] += 1	# primera columna
+	countriesBorders[matriz[i][-1]] += 1	# ultima columna
 
 
-
-dicc = collections.OrderedDict(sorted(dicc.items()))
-for k,v in dicc.items():
-	print (v)
+countriesBorders = collections.OrderedDict(sorted(countriesBorders.items()))
+for countryID, borders in countriesBorders.items():
+	print(borders)
 	
